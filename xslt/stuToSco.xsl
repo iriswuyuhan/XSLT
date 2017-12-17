@@ -8,7 +8,7 @@
     <xsl:template match="/学生列表">
         <xsl:element name="课程成绩列表">
             <xsl:for-each select="//课程成绩[@课程编号=$course1 and @成绩类型=$type1]">
-                <xsl:sort select="."/>
+                <xsl:sort select="得分"/>
                 <课程成绩 成绩性质="平时成绩" 课程编号="000001">
                     <成绩>
                         <学号><xsl:value-of select="./学号"/></学号>
