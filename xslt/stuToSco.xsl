@@ -1,7 +1,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
     <xsl:variable name="course1">000001</xsl:variable>
-    
+
     <xsl:variable name="type1">平时成绩</xsl:variable>
 
     <!--如此来看，把各种成绩分开还是更简单-->
