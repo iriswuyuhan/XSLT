@@ -1,18 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                exclude-result-prefixes="xs">
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
     <xsl:template match="/">
         <xsl:element name="课程成绩列表">
-            <xsl:element name="课程成绩">
-                <xsl:for-each-group select="//课程成绩" group-by="@课程编号">
-                    <xsl:sort select="current-grouping-key()"/>
-                    <xsl:attribute name="课程编号">
-                        <xsl:value-of select="current-grouping-key()"/>
-                    </xsl:attribute>
-                    <xsl:for-each-group select="current-group()" group-by="@课程性质">
-                        <xsl:sort select="current-grouping-key()"/>
+            <xsl:for-each-group select="//课程成绩" group-by="@课程编号">
+                <xsl:for-each-group select="current-group()" group-by="@成绩性质">
+                    <xsl:element name="课程成绩">
+                        <xsl:attribute name="课程编号">
+                            <xsl:value-of select="@课程编号"/>
+                        </xsl:attribute>
                         <xsl:attribute name="课程性质">
                             <xsl:value-of select="current-grouping-key()"/>
                         </xsl:attribute>
@@ -27,9 +22,9 @@
                                 </xsl:element>
                             </xsl:element>
                         </xsl:for-each>
-                    </xsl:for-each-group>
+                    </xsl:element>
                 </xsl:for-each-group>
-            </xsl:element>
+            </xsl:for-each-group>
         </xsl:element>
     </xsl:template>
 

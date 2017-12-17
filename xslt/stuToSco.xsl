@@ -17,7 +17,7 @@
     <xsl:template name="courseSort">
         <xsl:param name="course"/>
         <xsl:param name="type"/>
-        <xsl:for-each select="//课程成绩[(@课程编号=$course) and (@成绩类型=$type)]">
+        <xsl:for-each select="//课程成绩[(@课程编号=$course) and (@成绩性质=$type)]">
             <xsl:sort select="成绩/得分"/>
             <xsl:element name="课程成绩">
                 <xsl:attribute name="课程编号">
