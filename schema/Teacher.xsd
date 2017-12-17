@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://jw.nju.edu.cn/schema" 
+	xmlns:nju="http://www.nju.edu.cn/schema" 
+	xmlns:tns="http://jw.nju.edu.cn/schema"  
+	elementFormDefault="qualified">
+
+	<import namespace="http://www.nju.edu.cn/schema"
+		schemaLocation="PersonInfo.xsd" />
+
+
+	<element name="教师信息" type="tns:教师信息类型"/>
+
+	<complexType name="教师信息类型">
+		<sequence>
+			<element name="教工号" type="tns:教工号类型"/>
+			<element name="教师名称" type="nju:人员名称类型"/>
+			<element name="年龄" type="nju:人员年龄类型"/>
+			<element name="入职年份" type="date"/>
+			<element name="院系" type="nju:部门名称类型"/>
+			<element name="职称" type="tns:职称类型"/>
+		</sequence>
+	</complexType>
+    
+
+    <simpleType name="教工号类型">
+    	<restriction base="string">
+			<length value="9"/>
+    	</restriction>
+    </simpleType>
+
+    <simpleType name="职称类型">
+		<restriction base="string">
+			<enumeration value="教授"/>
+			<enumeration value="副教授"/>
+			<enumeration value="讲师"/>
+		</restriction>
+	</simpleType>
+</schema>

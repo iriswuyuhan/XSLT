@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		targetNamespace="http://jw.nju.edu.cn/schema"
+		xmlns:tns="http://jw.nju.edu.cn/schema"
+		xmlns:nju="http://www.nju.edu.cn/schema"
+		elementFormDefault="qualified">
+<import namespace="http://www.nju.edu.cn/schema"
+		schemaLocation="PersonInfo.xsd" />
+
+	<element name="课程信息" type="tns:课程信息类型"/>
+
+	<complexType name="课程信息类型">
+		<sequence>
+			<element name="课程编号" type="tns:课程编号类型"/>
+			<element name="课程名称" type="tns:课程名称类型"/>
+			<element name="授课教师" type="nju:人员名称类型"/>
+			<element name="上课时间与地点表" type="tns:上课时间与地点表类型"/>
+			<element name="选课类型" type="tns:课程类型"/>
+		</sequence>
+	</complexType>
+
+	<simpleType name="课程编号类型">
+		<restriction base="string">
+			<length value="6"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="课程名称类型">
+		<restriction base="string"/>
+	</simpleType>
+
+	<complexType name="上课时间与地点表类型">
+		<sequence maxOccurs="unbounded">
+			<element name="上课时间与地点" type="tns:上课时间与地点类型" />
+		</sequence>
+	</complexType>
+
+	<simpleType name="上课时间与地点类型">
+		<restriction base="string"/>
+	</simpleType>
+
+	<simpleType name="课程类型">
+		<restriction base="string">
+			<enumeration value="核心"/>
+			<enumeration value="平台"/>
+			<enumeration value="选修"/>
+		</restriction>
+	</simpleType>
+</schema>

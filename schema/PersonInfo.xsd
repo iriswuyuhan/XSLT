@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.nju.edu.cn/schema"
+        xmlns:nju="http://www.nju.edu.cn/schema"
+        elementFormDefault="qualified">
+    <include schemaLocation="Department.xsd"/>
+    
+    <simpleType name="人员名称类型">
+    	<restriction base="string">
+            <minLength value="2"/>
+            <maxLength value="10"/>
+    	</restriction>
+    </simpleType>
+
+    <simpleType name="人员职务类型">
+        <restriction base="string">
+            <enumeration value="学生"/>
+            <enumeration value="老师"/>
+            <enumeration value="职工"/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="人员年龄类型">
+        <restriction base="integer">
+            <minInclusive value="10"/>
+            <maxInclusive value="150"/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="人员性别类型">
+        <restriction base="string">
+            <enumeration value="男"/>
+            <enumeration value="女"/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="身份证号类型">
+        <restriction base="string">
+            <length value="18"/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="手机号类型">
+        <restriction base="string">
+            <length value="11"/>
+        </restriction>
+    </simpleType>
+
+    <complexType name="人员信息类型">
+        <sequence>
+            <element name="姓名" type="nju:人员名称类型"/>
+            <element name="人员职务" type="nju:人员职务类型"/>
+            <element name="人员年龄" type="nju:人员年龄类型"/>
+            <element name="出生日期" type="date"/>
+            <element name="性别" type="nju:人员性别类型"/>
+            <element name="身份证号" type="nju:身份证号类型"/>
+            <element name="手机号类型" type="nju:手机号类型"/>
+            <element name="入校时间" type="date"/>
+            <element name="部门名称" type="nju:部门名称类型"/>
+        </sequence>
+    </complexType>
+
+    <element name="人员信息" type="nju:人员信息类型"/>
+
+</schema>

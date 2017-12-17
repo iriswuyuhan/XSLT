@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://jw.nju.edu.cn/schema"
+	xmlns:tns="http://jw.nju.edu.cn/schema"
+	xmlns:nju="http://www.nju.edu.cn/schema"
+		elementFormDefault="qualified">
+
+	<include schemaLocation="Student.xsd"/>
+	
+
+	<complexType name="学生列表类型">
+		<sequence minOccurs="0" maxOccurs="45">
+			<element name="院系学生" type="tns:院系学生类型"/>
+		</sequence>
+	</complexType>
+
+	<element name="学生列表" type="tns:学生列表类型"/>
+
+
+	<complexType name="院系学生类型">
+		<sequence minOccurs="0" maxOccurs="4">
+			<element name="学生年级" type="tns:学生年级类型"/>
+		</sequence>
+		<attribute name="院系编号" type="nju:部门编号类型"/>
+	</complexType>
+
+    <complexType name="学生年级类型">
+    	<sequence>
+			<element name="学生" type="tns:学生信息类型"/>
+		</sequence>
+		<attribute name="年级" type="tns:年级类型"/>
+    </complexType>
+
+   	<simpleType name="年级类型">
+		<restriction base="string">
+			<enumeration value="大一"/>
+			<enumeration value="大二"/>
+			<enumeration value="大三"/>
+			<enumeration value="大四"/>
+		</restriction>
+	</simpleType>
+    
+</schema>

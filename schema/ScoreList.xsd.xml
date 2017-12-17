@@ -1,0 +1,8 @@
+<sch:课程成绩列表 xmlns:sch="http://jw.nju.edu.cn/schema">
+  <sch:课程成绩 课程编号="string" 成绩性质="平时成绩">
+    <sch:成绩>
+      <sch:学号>stringstr</sch:学号>
+      <sch:得分>3</sch:得分>
+    </sch:成绩>
+  </sch:课程成绩>
+</sch:课程成绩列表>
