@@ -17,14 +17,24 @@
     <xsl:template name="courseSort">
         <xsl:param name="course"/>
         <xsl:param name="type"/>
-        <xsl:for-each select="//课程成绩[@课程编号=$course and @成绩类型=$type]">
+        <xsl:for-each select="//课程成绩[(@课程编号=$course) and (@成绩类型=$type)]">
             <xsl:sort select="成绩/得分"/>
-            <课程成绩 成绩性质="平时成绩" 课程编号="000001">
-                <成绩>
-                    <学号><xsl:value-of select="./学号"/></学号>
-                    <得分><xsl:value-of select="./得分"/></得分>
-                </成绩>
-            </课程成绩>
+            <xsl:element name="课程成绩">
+                <xsl:attribute name="课程编号">
+                    <xsl:value-of select="$course"/>
+                </xsl:attribute>
+                <xsl:attribute name="成绩类型">
+                    <xsl:value-of select="$type"/>
+                </xsl:attribute>
+                <xsl:element name="成绩">
+                    <xsl:element name="学号">
+                        <xsl:value-of select="成绩/学号"/>
+                    </xsl:element>
+                    <xsl:element name="得分">
+                        <xsl:value-of select="成绩/得分"/>
+                    </xsl:element>
+                </xsl:element>
+            </xsl:element>
         </xsl:for-each>
     </xsl:template>
 
